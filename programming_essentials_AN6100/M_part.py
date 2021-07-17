@@ -55,5 +55,5 @@ final_df["Hrs"] = hours
 final_df["Mins"] = minutes
 
 # put out
-output_filename = "MG"+year+month+".csv"
+output_filename = "MG_"+year+month+".csv"
 final_df.to_csv(output_filename)
