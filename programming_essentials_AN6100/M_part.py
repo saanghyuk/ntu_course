@@ -3,7 +3,12 @@ import pandas as pd
 import calendar
 
 # When you start service, please use the second line below -> # year_month = '202105'
-year_month = input("Please enter MONTH and YEAR : YYYYMM")
+while True:
+    year_month = input("Please enter MONTH and YEAR : YYYYMM")
+    if (len(year_month) != 6) or (year_month[:4] not in range(1, 13)) or (year_month[:4] not in range(1, 31)):
+        print("Please Enter the right month and year YYYYMM")
+    else:
+        break
 # year_month = '202105'
 
 # get names list of all files
@@ -19,7 +24,7 @@ month = year_month[-2:]
 last_day_of_month = calendar.monthrange(int(year), int(month))[-1]
 
 # Make the blank DF to append datas in the for loop below
-final_df = pd.DataFrame(columns=["Date", "In Time", "Out Time", "Token ID"])
+final_df = pd.DataFrame(columns=["Date", "In Trime", "Out Time", "Token ID"])
 print(final_df)
 
 # for loop to extract, merge, append
