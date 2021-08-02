@@ -52,7 +52,7 @@ SELECT * FROM titles WHERE title NOT LIKE '%Engineer%' AND YEAR(to_date) = 9999;
 SELECT COUNT(*) FROM employees WHERE hire_date BETWEEN '1990-01-01' AND'1994-01-01';
 
 -- 16. Find the list of unique last names of female employees (in alphabetical order), who were born before the year 1970, and hired after 1996. 
-SELECT DISTINCT last_name FROM employees WHERE YEAR(birth_date) < 1970 AND YEAR(hire_date) > 1996 ORDER BY last_name; 
+SELECT DISTINCT last_name FROM employees WHERE YEAR(birth_date) < 1970 AND YEAR(hire_date) > 1996 AND gender = 'F'ORDER BY last_name; 
 
 
 -- 17.	For each gender, how many employees were hired before 1989;
