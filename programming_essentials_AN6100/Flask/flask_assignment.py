@@ -54,6 +54,7 @@ class CustomerAdd(Resource):
         parser.add_argument('name', required=True)
         args = parser.parse_args()
 
+
         new_object = customer_info.insert_one({
             "id": args["id"],
             "name": args["name"]
