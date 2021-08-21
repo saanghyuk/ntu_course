@@ -1,17 +1,20 @@
 USE anz;
 
 # 1)	How many unique accounts are there?
+# 100
 SELECT COUNT(DISTINCT(account)) FROM anz;
 
 # 2)	What are the currencies used in transactions?
+# AUD
 SELECT DISTINCT(currency) FROM anz;
 
 #  3)	What are the types of txn_descriptions? For each type, how many transactions are there?
+# POS : 3783, SALES-POS : 3934
 SELECT txn_description, COUNT(transaction_id) FROM anz
 GROUP BY txn_description;
 
 # 4)	Based on the above txn_descriptions types, for each type, how many unique accounts can be observed to have performed at least 2 transactions?
-
+# POS: 99, SALES-POS : 99
 # first
 SELECT txn_description, COUNT(DISTINCT(account))
 FROM 
@@ -49,14 +52,12 @@ GROUP BY txn_description);
 
 
 # 5)	Are there any customers with more than one account? If so, how many?
-SELECT COUNT(customer_id) 
-FROM  (
-SELECT customer_id, COUNT(account) FROM anz
+# 0
+SELECT customer_id, COUNT(DISTINCT(account)) FROM anz
 GROUP BY customer_id
-HAVING COUNT(account) > 1
-) AS count_table;
+HAVING COUNT(DISTINCT(account)) > 1;
 
-
+ 
 # 6)	The management believes a majority of movements is “debit”, not “credit”. Is it the case?
 # Only Debit is in the data
 SELECT movement, COUNT(transaction_id) 
