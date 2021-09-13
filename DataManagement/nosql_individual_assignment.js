@@ -1,4 +1,5 @@
-mongoimport --db nosql --collection anz --jsonArray  --file anz.json
+// import json
+// mongoimport --db nosql --collection anz --jsonArray  --file anz.json
 
 
 // 1)	How many transactions are performed by each customer_id?
@@ -36,7 +37,6 @@ db.anz.aggregate(
 
 
 // 4)	Demographic and locational insights – For each merchant_state, generate the amount of unique male customers and female customers.
-For each merchant_state, generate the amount of unique male customers and female customers.
 
 db.anz.aggregate(
   [
@@ -47,5 +47,3 @@ db.anz.aggregate(
     }
   ]
 )
-
-
