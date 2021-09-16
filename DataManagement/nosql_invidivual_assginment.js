@@ -38,12 +38,8 @@ db.anz.aggregate(
 
 // 4)	Demographic and locational insights – For each merchant_state, generate the amount of unique male customers and female customers.
 
-db.anz.aggregate(
-  [
-     { $group :
-      {
-        _id : {merchant_state:"$merchant_state", gender : "$gender"}, sum_amount : {$sum : "$amount"}
-      }
-    }
-  ]
-)
+
+db.anz.aggregate([
+  {$group : {_id : {groupByMerchantState: "$merchant_state", groupbyGender : "$gender"}, countPeople: {$addToSet: "$customer_id"}}},
+  {$project : {"groupByMerchantState": 1, "groupByGender": 1, countX:{$size : "$countPeople"}}}
+])
